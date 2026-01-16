@@ -1,3 +1,5 @@
+//global rapper for the app ROOT LAYOUT (always loaded)
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
