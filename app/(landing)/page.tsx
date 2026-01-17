@@ -1,11 +1,31 @@
+import Navbar from "../component/landing/Navbar";
+import CommunityStoriesPage from "./communityStories/page";
+import FAQ from "./faq/page";
+import FeaturePage from "./feature/page";
+import ForCustomerPage from "./forCoustomer.tsx/page";
+import ForShopOwnerPage from "./forShopOwner/page";
+import Title from "./heroSection/page";
+import HowWorkPage from "./howwork/page";
+import JoinsPage from "./joins/page";
 import LandingLayout from "./layout";
+import PricingPlansPage from "./PricingPlans/page";
+import ShopCategoriesPage from "./shopCategories/page";
 
-export default function LandingPage() {
-  return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-white">
-        Welcome to Z-Mart Landing Page
-      </h1>
-    </main>
+const layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+    <div className="landing-layout">
+      <Title />
+      <FeaturePage />
+      <HowWorkPage />
+      <ForShopOwnerPage />
+      <ForCustomerPage />
+      <ShopCategoriesPage />
+      <CommunityStoriesPage />
+      <PricingPlansPage />
+      <FAQ />
+      <JoinsPage />
+    </div>
   );
-}
+};
+
+export default layout;
