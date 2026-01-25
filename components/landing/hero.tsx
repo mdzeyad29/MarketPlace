@@ -1,29 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { HighlightText } from "../ui/highlight-text";
+import { BadgePill } from "../ui/badgePill";
 
 const Hero = () => {
   return (
-    <section className="relative bg-white p-14 lg:p-20">
+    <section className="relative bg-white  lg:p-20">
       <div className="px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           
           {/* LEFT CONTENT */}
-          <div className="text-center lg:text-left lg:max-w-xl">
+          <div className="text-center lg:text-left lg:max-w-xl sm:pb-20">
             {/* Badge */}
-            <span className="inline-flex items-center rounded-full bg-sky-100 px-10  py-4 text-sm font-medium text-sky-700">
-              🚀 Hyperlocal Marketplace Revolution
-            </span>
+            <BadgePill >🚀 Hyperlocal Marketplace Revolution</BadgePill>
 
             {/* Heading */}
             <h1 className="mt-6 text-4xl font-extrabold leading-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl gap-2">
               Bringing Your{" "}
-              <span className="text-sky-500">Local Shops</span>{" "}
+              <HighlightText>Local Shops</HighlightText>
               Online
             </h1>
 
             {/* Description */}
-            <p className="mt-6 max-w-xl text-lg text-gray-600">
+             <p className="mt-6 text-lg font-medium leading-tight text-gray-600 sm:text-5xl md:text-lg lg:text-lg gap-2">
+            {/* <p className="mt-6 max-w-xl text-lg text-gray-600  md:flex md:items-center md:gap-4 md:text-left"> */}
               Z-Mart connects you with nearby local businesses digitally.
               Discover trusted neighborhood shops, support your community,
               and enjoy a personalized shopping experience.

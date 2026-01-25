@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -8,9 +9,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-14 py-4 sticky top-0 z-50">
 
         {/* Left - Logo */}
-        <div className="text-2xl font-bold text-gray-900">
-          <Link href="/">Z-Mart</Link>
-        </div>
+        <Logo />
 
         {/* Center - Navigation Links */}
         <ul className="hidden md:flex items-center gap-6 text-sm  text-gray-600 px-10">
