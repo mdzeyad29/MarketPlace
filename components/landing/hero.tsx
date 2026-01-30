@@ -6,7 +6,7 @@ import { BadgePill } from "../ui/badgePill";
 
 const Hero = () => {
   return (
-    <section className="relative bg-white  lg:p-20">
+    <section className="relative bg-white  lg:p-10">
       <div className="px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           
