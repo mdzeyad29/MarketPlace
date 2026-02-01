@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -8,9 +9,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-14 py-4 sticky top-0 z-50">
 
         {/* Left - Logo */}
-        <div className="text-2xl font-bold text-gray-900">
-          <Link href="/">Z-Mart</Link>
-        </div>
+        <Logo />
 
         {/* Center - Navigation Links */}
         <ul className="hidden md:flex items-center gap-6 text-sm  text-gray-600 px-10">
@@ -56,7 +55,10 @@ const Navbar = () => {
   size="lg"
   className="rounded-full bg-sky-100 text-sky-700 shadow-md transition-all hover:bg-sky-200 hover:scale-105"
 >
-  Join Now
+  <Link href="/signup">
+    Join Now
+  </Link>
+
 </Button>
 
           <Button
@@ -65,7 +67,8 @@ const Navbar = () => {
  className="rounded-full bg-sky-400 px-8 font-semibold text-white shadow-md transition-all hover:bg-sky-500 hover:scale-105"
 
 >
-  <Link href="/get-started">
+
+  <Link href="/login">
     Get Started
   </Link>
 </Button>

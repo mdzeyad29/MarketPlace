@@ -1,9 +1,11 @@
-const ForCustomerPage = () => {             
-    return(
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            Welcome to For Customer Page
-    </h1>
-    )
-};
+import ForCustomerPage from "@/components/landing/customerPage";
 
-export default ForCustomerPage; 
+
+const ForCustomer = () => {
+  return (
+    <div >
+      <ForCustomerPage />
+    </div>
+  )
+}
+export default ForCustomer;

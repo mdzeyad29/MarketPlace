@@ -1,8 +1,11 @@
+import Hero from "@/components/landing/hero";
+
+
 const Title = () => {
   return (
-    <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-      Welcome to MarketPlace HomePage
-    </h1>
+    <div className="text-4xl md:text-5xl font-bold text-center mb-6">
+     <Hero />
+    </div>
   );
 };
 
