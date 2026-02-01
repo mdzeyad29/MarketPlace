@@ -1,22 +1,80 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { useAuthStore } from "@/app/store/auth.store";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+  const [role, setRole] = useState<"customer" | "shopkeeper">("customer");
+
+   const login = useAuthStore((state) => state.login);
+  const router = useRouter();
+
+
+const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // ❗ page reload roko
+
+    // 🔹 mock user (later API se aayega)
+    const user = {
+      id: Date.now().toString(),
+      email: "test@example.com",
+      role,
+    };
+
+    // ✅ Zustand store me save
+    login(user);
+
+    // ✅ Role based redirect
+    if (role === "shopkeeper") {
+      router.push("/dashboard?role=shopkeeper");
+    } else {
+      router.push("/dashboard?role=customer");
+    }
+  };
+
+
   return (
     <section className="flex min-h-screen items-center justify-center bg-sky-50 px-4">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
         
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold text-gray-900">
             Welcome Back to Z-Mart
           </h1>
           <p className="mt-2 text-sm text-gray-600">
-            Login to manage your account and orders
+            Login as {role === "customer" ? "Customer" : "ShopKeeper"}
           </p>
         </div>
 
+        {/* Persona Switch */}
+        <div className="mb-6 flex rounded-full bg-gray-100 p-1">
+          <button
+            onClick={() => setRole("customer")}
+            className={`flex-1 rounded-full py-2 text-sm font-medium transition ${
+              role === "customer"
+                ? "bg-white text-sky-600 shadow"
+                : "text-gray-500"
+            }`}
+          >
+            Customer
+          </button>
+
+          <button
+            onClick={() => setRole("shopkeeper")}
+            className={`flex-1 rounded-full py-2 text-sm font-medium transition ${
+              role === "shopkeeper"
+                ? "bg-white text-sky-600 shadow"
+                : "text-gray-500"
+            }`}
+          >
+            ShopKeeper
+          </button>
+        </div>
+
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5"  onSubmit={handleSubmit}>
           {/* Email */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
@@ -41,50 +99,25 @@ const LoginPage = () => {
             />
           </div>
 
-          {/* Options */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-400"
-              />
-              Remember me
-            </label>
+          
 
-            <Link
-              href="/forgot-password"
-              className="font-medium text-sky-600 hover:underline"
-            >
-              Forgot password?
-            </Link>
-          </div>
+          {/* Hidden role field (important) */}
+          <input type="hidden" name="role" value={role} />
 
           {/* Login Button */}
           <button
             type="submit"
             className="w-full rounded-full bg-sky-500 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-sky-600"
           >
-            Login
+            Login as {role === "customer" ? "Customer" : "Shop Owner"}
           </button>
         </form>
-
-        {/* Divider */}
-        <div className="my-6 flex items-center">
-          <div className="h-px flex-1 bg-gray-200" />
-          <span className="px-3 text-xs text-gray-400">OR</span>
-          <div className="h-px flex-1 bg-gray-200" />
-        </div>
-
-        {/* Social Login */}
-        <button className="w-full rounded-full border border-gray-300 py-3 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
-          Continue with Google
-        </button>
 
         {/* Footer */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Don’t have an account?{" "}
           <Link
-            href="/signup"
+            href={`/signup?role=${role}`}
             className="font-medium text-sky-600 hover:underline"
           >
             Create one

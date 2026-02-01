@@ -1,8 +1,11 @@
-const SignUp = () => {
+import SignUp from "@/components/authentication/SignUp";
+
+const SignUpPage = () => {
   return (
     <div>
-      <h2>Sign Up</h2>
-      </div>
-  )
-}
-export default SignUp ;
+      <SignUp />
+    </div>
+  );
+};
+
+export default SignUpPage;
